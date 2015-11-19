@@ -2,7 +2,7 @@ class StoreController < ApplicationController
 
   def index
     @products = Product.order(:title)
-    
+
     #デバッグ用
     puts "-------------------------"
     puts session[:counter]
@@ -15,7 +15,7 @@ class StoreController < ApplicationController
     end
 
     @counter = session[:counter]
-
+    @cart = current_cart
   end
 
 end
