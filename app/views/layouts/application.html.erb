@@ -24,10 +24,19 @@
         <% end %>
         <li><a><%= @time %></a></li>
       </ul>
+
+      <% if session[:user_id] %>
+      <ul>
+        <li><%= link_to '注文', orders_path   %></li>
+        <li><%= link_to '商品', products_path %></li>
+        <li><%= link_to 'ユーザ', users_path  %></li>
+      </ul>
+      <%= button_to 'ログアウト', logout_path, method: :delete %>
+      <% end %>
     </div>
-  <div id="main">
-    <%= yield %>
+    <div id="main">
+      <%= yield %>
+    </div>
   </div>
-</div>
 </body>
 </html>
