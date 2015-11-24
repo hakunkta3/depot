@@ -2,12 +2,19 @@ class StoreController < ApplicationController
   skip_before_action :authorize
 
   def index
-    @products = Product.order(:title)
 
-    #デバッグ用
-    puts "-------------------------"
-    puts session[:counter]
-    puts "-------------------------"
+    if params[:set_locale]
+      redirect_to store_path(locale: params[:set_locale])
+    else
+      @products = Product.order(:title)
+      @cart = current_cart
+    end
+
+
+    # #デバッグ用
+    # puts "-------------------------"
+    # puts session[:counter]
+    # puts "-------------------------"
 
     if session[:counter].nil?
         session[:counter] = 1
